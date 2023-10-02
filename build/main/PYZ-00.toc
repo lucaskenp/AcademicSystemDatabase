@@ -1,5 +1,4 @@
-('C:\\Users\\Lucas\\Desktop\\Arquivos\\Faculdade\\banco de '
- 'dados\\projeto_final\\build\\main\\PYZ-00.pyz',
+('C:\\Users\\Lucas\\Desktop\\Arquivos\\Faculdade\\banco_de_dados\\projeto_final\\build\\main\\PYZ-00.pyz',
  [('_compat_pickle',
    'C:\\Users\\Lucas\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\_compat_pickle.py',
    'PYMODULE'),
