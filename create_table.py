@@ -45,7 +45,7 @@ def create_table():
         codigo            INTEGER PRIMARY KEY,
         disciplina_codigo INTEGER REFERENCES disciplina (codigo) ON DELETE CASCADE
                                                                 ON UPDATE CASCADE
-                                NOT NULL,
+                                                                NOT NULL,
         semestre          INTEGER,
         horario           INTEGER
     );
@@ -55,9 +55,11 @@ def create_table():
     cur.execute ("""
     CREATE TABLE IF NOT EXISTS turma_possui_prof (
         professor_siape INTEGER REFERENCES professor (siape) ON DELETE CASCADE
-                                                            ON UPDATE CASCADE,
+                                                            ON UPDATE CASCADE
+                                                            NOT NULL,
         turma_codigo    INTEGER REFERENCES turma (codigo) ON DELETE CASCADE
-                                                        ON UPDATE CASCADE,
+                                                        ON UPDATE CASCADE
+                                                        NOT NULL,
         PRIMARY KEY (
             professor_siape,
             turma_codigo
@@ -69,9 +71,11 @@ def create_table():
     cur.execute ("""
     CREATE TABLE IF NOT EXISTS curso_possui_discip (
         curso_codigo        INTEGER REFERENCES curso (codigo) ON DELETE CASCADE
-                                                            ON UPDATE CASCADE,
+                                                            ON UPDATE CASCADE
+                                                            NOT NULL,
         disciplina_codigo   INTEGER REFERENCES disciplina (codigo) ON DELETE CASCADE
-                                                                ON UPDATE CASCADE,
+                                                                ON UPDATE CASCADE
+                                                                NOT NULL,
         PRIMARY KEY (
             curso_codigo,
             disciplina_codigo
@@ -83,9 +87,11 @@ def create_table():
     cur.execute ("""
     CREATE TABLE IF NOT EXISTS curso_possui_aluno (
         curso_codigo        INTEGER REFERENCES curso (codigo) ON DELETE CASCADE
-                                                            ON UPDATE CASCADE,
+                                                            ON UPDATE CASCADE
+                                                            NOT NULL,
         aluno_matricula     INTEGER REFERENCES aluno (matricula) ON DELETE CASCADE
-                                                            ON UPDATE CASCADE,
+                                                            ON UPDATE CASCADE
+                                                            NOT NULL,
         PRIMARY KEY (
             curso_codigo,
             aluno_matricula
@@ -97,9 +103,11 @@ def create_table():
     cur.execute ("""
     CREATE TABLE IF NOT EXISTS turma_possui_aluno (
         turma_codigo        INTEGER REFERENCES turma (codigo) ON DELETE CASCADE
-                                                            ON UPDATE CASCADE,
+                                                            ON UPDATE CASCADE
+                                                            NOT NULL,
         aluno_matricula     INTEGER REFERENCES aluno (matricula) ON DELETE CASCADE
-                                                            ON UPDATE CASCADE,
+                                                            ON UPDATE CASCADE
+                                                            NOT NULL,
         freq                INTEGER,
         media               INTEGER,
         
@@ -115,31 +123,4 @@ def create_table():
     
 
 create_table()
-#cur.execute("CREATE TABLE sqlitestudio_temp_table AS SELECT *FROM movie")
 
-#cur.execute("DROP TABLE movie")
-
-#cur.execute("""
-#    CREATE TABLE movie (
-#        title TEXT    PRIMARY KEY
-#                    NOT NULL,
-#        year  NUMERIC NOT NULL,
-#        score NUMERIC NOT NULL
-#    )          
-#""")
-#
-#cur.execute("""
-#    INSERT INTO movie (
-#                      title,
-#                      year,
-#                      score
-#                  )
-#                  SELECT title,
-#                         year,
-#                         score
-#                    FROM sqlitestudio_temp_table
-#""")
-#
-#cur.execute("""
-#   DROP TABLE sqlitestudio_temp_table
-#""")

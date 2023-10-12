@@ -3,7 +3,6 @@ import sqlite3
 class Database:
     db_name = 'sistema_academico.db'
 
-       
     def run_query(self, query, parameters = ()):
         try:
             conn = sqlite3.connect(self.db_name)
